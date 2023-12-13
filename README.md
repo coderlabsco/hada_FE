@@ -11,8 +11,7 @@
   <img alt="" src="https://img.shields.io/badge/ant design v5.12.2-0170FE?style=for-the-badge&logoColor=white&logo=antdesign">
   <img alt="" src="https://img.shields.io/badge/Tailwind Css-06B6D4?style=for-the-badge&logoColor=white&logo=tailwindcss">
   <img alt="" src="https://img.shields.io/badge/Apollo GraphQL-311C87?style=for-the-badge&logo=apollographql">
-  <img alt="" src="https://img.shields.io/badge/GraphQl-8A2BE2?style=for-the-badge&logoColor=white&logo=graphql
-">
+  <img alt="" src="https://img.shields.io/badge/GraphQl-8A2BE2?style=for-the-badge&logoColor=white&logo=graphql">
 </p>
 
 ### Prerrequisitos
