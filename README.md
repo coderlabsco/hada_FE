@@ -5,11 +5,14 @@
 <h1 align="center" style="margin-top: -10px; font-family: 'Prompt', sans-serif; font-weghy">HaDa</h1>
 
 <p align="center">
-  <a aria-label="Servilla" href="#">
-    <img src="https://img.shields.io/badge/next.js-v14.0.4-black?style=for-the-badge&logoColor=white&logo=nextdotjs">
-  </a>
-  <img alt="" src="https://img.shields.io/badge/node-v20.10.0-green?style=for-the-badge&labelColor=000000&logo=Node.js">
-  <img alt="" src="https://img.shields.io/badge/pnpm-orange?style=for-the-badge&labelColor=000000&logo=Pnpm">
+  <img src="https://img.shields.io/badge/next.js v14.0.4-black?style=for-the-badge&logoColor=white&logo=nextdotjs">
+  <img alt="" src="https://img.shields.io/badge/node.js 20.10.0-green?style=for-the-badge&logoColor=white&logo=Node.js">
+  <img alt="" src="https://img.shields.io/badge/pnpm 6.0-orange?style=for-the-badge&logoColor=white&logo=Pnpm">
+  <img alt="" src="https://img.shields.io/badge/ant design v5.12.2-0170FE?style=for-the-badge&logoColor=white&logo=antdesign">
+  <img alt="" src="https://img.shields.io/badge/Tailwind Css-06B6D4?style=for-the-badge&logoColor=white&logo=tailwindcss">
+  <img alt="" src="https://img.shields.io/badge/Apollo GraphQL-311C87?style=for-the-badge&logo=apollographql">
+  <img alt="" src="https://img.shields.io/badge/GraphQl-8A2BE2?style=for-the-badge&logoColor=white&logo=graphql
+">
 </p>
 
 ### Prerrequisitos
