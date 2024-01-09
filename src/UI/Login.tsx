@@ -2,9 +2,13 @@
 'use client'
 import type React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd'
+import Link from 'next/link'
 
 const onFinish = (values: any) => {
   console.log('Success:', values)
+  {
+    <Link href="/history">a</Link>
+  }
 }
 
 const onFinishFailed = (errorInfo: any) => {
