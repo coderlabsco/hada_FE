@@ -1,11 +1,13 @@
 'use client'
-import { ColumnNames, IReport, typeVehicle } from '@/interfaces/interfaces'
+import { IReport, typeVehicle } from '@/interfaces/interfaces'
 import { Button, Pagination } from 'antd'
 import Table, { ColumnsType } from 'antd/es/table'
-import Link from 'next/link'
 import React from 'react'
+import { useRouter } from 'next/navigation'
+
 
 const History = () => {
+  const router = useRouter();
 
   const columns: ColumnsType<IReport> = [
     {
@@ -71,7 +73,7 @@ const History = () => {
   ]
 
   function registerNewVisitor() {
-    <Link href={'/register'}></Link>
+    router.push('/register-visitor')
   }
   return (
     <>
