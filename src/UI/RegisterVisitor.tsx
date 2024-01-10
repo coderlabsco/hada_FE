@@ -3,8 +3,14 @@ import HadaButton from '@/components/HadaButton'
 import HadaInput from '@/components/HadaInput'
 import { IRegisterReportType } from '@/interfaces/interfaces'
 import { Form, Radio } from 'antd'
+import { useRouter } from 'next/navigation'
 
 const RegisterVisitor = () => {
+  const router = useRouter();
+
+  function goToHistory() {
+    router.push('/history')
+  }
 
   return (
     <section className='w-[350px] h-[866px] md:w-[580px] md:h-[627px] lg:w-[607px] lg:h-[571px]'>
@@ -68,7 +74,7 @@ const RegisterVisitor = () => {
         </div>
         <div className='lg:flex sm:flex-col sm:justify-center md:flex-col-2 md:justify-normal lg:flex-col-2 lg:justify-normal'>
           <div>
-            <HadaButton className='mb-3 w-[310px] md:w-[250px] lg:w-[256.5px]' style={{ paddingBottom: '10px' }}>Historial de Registros</HadaButton>
+            <HadaButton onClick={goToHistory} className='mb-3 w-[310px] md:w-[250px] lg:w-[256.5px]' style={{ paddingBottom: '10px' }}>Historial de Registros</HadaButton>
           </div>
           <div>
             <HadaButton className='w-[310px] md:w-[250px] lg:w-[256.5px]' style={{ backgroundColor: 'black', color: 'white' }}>Registrar Ingreso</HadaButton>
