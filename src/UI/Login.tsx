@@ -4,16 +4,22 @@ import { Button, Checkbox, Form, Input, notification } from 'antd'
 import { useMutation } from '@apollo/client'
 import { LOGIN } from '../../types/operation'
 import { useRouter } from 'next/navigation'
+import { useStore } from '@/context/zustand'
+import { useState } from 'react'
+
 
 function App() {
   const router = useRouter()
+  const {setAccess_token, access_token} = useStore()
 
   const [login, { loading }] = useMutation(LOGIN, {
     onCompleted: (credentials) => {
-      console.log(credentials)
+      const {access_token, refresh_token} = credentials.login
+      setAccess_token(access_token)
       router.push('/history')
     },
   })
+  
   const onFinish = (values: any) => {
     login({ variables: { loginUserInput: values } })
   }
