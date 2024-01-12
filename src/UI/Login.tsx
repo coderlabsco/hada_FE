@@ -1,28 +1,37 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client'
 import type React from 'react'
-import { Button, Checkbox, Form, Input } from 'antd'
-import Link from 'next/link'
+import { Button, Checkbox, Form, Input, notification } from 'antd'
+import { useMutation } from '@apollo/client'
+import { LOGIN } from '../../types/operation'
+import { getClient } from '@/graphql/ApolloClient'
 
-const onFinish = (values: any) => {
-  console.log('Success:', values)
-  {
-    <Link href="/history">a</Link>
+function App() {
+
+  const onFinish = async (values: any) => {
+    const { data } = await getClient().mutate({
+      mutation: LOGIN,
+      variables: { loginUserInput: { ...values } },
+    })
+
+    console.log(data);
   }
-}
+  
+  
+  
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo)
+  }
+  
+  interface FieldType {
+    username?: string
+    password?: string
+    remember?: string
+  }
 
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo)
-}
-
-interface FieldType {
-  username?: string
-  password?: string
-  remember?: string
-}
-
-const App: React.FC = () => (
-  <>
+  
+  return (
+    <>
     <h2 className="text-xl font-semibold mb-[22px]">Ingresar Como Vigilante</h2>
     <Form
       name="signIn"
@@ -32,12 +41,12 @@ const App: React.FC = () => (
       autoComplete="off"
       requiredMark={false}
       style={{ width: '100%' }}
-    >
+      >
       <Form.Item<FieldType>
         label="Correo"
         name="username"
         rules={[{ required: true, message: 'Please input your username!' }]}
-      >
+        >
         <Input size="large" placeholder='correo electrónico' />
       </Form.Item>
 
@@ -45,14 +54,14 @@ const App: React.FC = () => (
         label="Contraseña"
         name="password"
         rules={[{ required: true, message: 'Please input your password!' }]}
-      >
+        >
         <Input.Password size="large" placeholder='Contraseña' />
       </Form.Item>
 
       <Form.Item<FieldType>
         name="remember"
         valuePropName="checked"
-      >
+        >
         <Checkbox style={{ color: '#444444', fontSize: 14 }}>Recordarme</Checkbox>
       </Form.Item>
 
@@ -63,6 +72,9 @@ const App: React.FC = () => (
       </Form.Item>
     </Form>
   </>
+
 )
+}
+
 
 export default App

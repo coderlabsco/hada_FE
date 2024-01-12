@@ -4,7 +4,9 @@ import { Button, Pagination } from 'antd'
 import Table, { ColumnsType } from 'antd/es/table'
 import React from 'react'
 import { useRouter } from 'next/navigation'
-
+import { getClient } from '@/graphql/ApolloClient'
+import { CALL_POLICE, GET_ALL_REPORTS } from '../../types/operation'
+import { useQuery } from '@apollo/client'
 
 const History = () => {
   const router = useRouter();
@@ -42,7 +44,7 @@ const History = () => {
     },
   ]
 
-  const data: IReport[] = [
+  const fakeData: IReport[] = [
     {
       "key": "1",
       "_id": "659460bf50b48a51055c8563",
@@ -72,6 +74,8 @@ const History = () => {
 
   ]
 
+const {data} = useQuery(CALL_POLICE)
+console.log(data);
   function registerNewVisitor() {
     router.push('/register-visitor')
   }
@@ -79,7 +83,7 @@ const History = () => {
     <>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={fakeData}
         footer={() => <footer className='flex justify-between'>
           <Pagination ></Pagination>
           <Button onClick={registerNewVisitor}>Registrar Ingreso de Visitante</Button>

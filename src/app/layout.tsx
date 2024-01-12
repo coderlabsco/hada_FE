@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/AntdRegistry'
 
 import './globals.css'
+import Navigation from '@/components/Navigation'
+import { ApolloWrapper } from '@/lib/Apollo-Wraper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +23,10 @@ export default function RootLayout ({
     <html lang="en">
       <body className={inter.className}>
         <StyledComponentsRegistry>
+          <Navigation/>
+          <ApolloWrapper>
           {children}
+          </ApolloWrapper>
         </StyledComponentsRegistry>
       </body>
     </html>
