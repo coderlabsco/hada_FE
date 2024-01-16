@@ -7,10 +7,11 @@ import { useRouter } from 'next/navigation'
 import { getClient } from '@/graphql/ApolloClient'
 import { CALL_POLICE, GET_ALL_REPORTS } from '../../types/operation'
 import { useQuery } from '@apollo/client'
+import { useLoginStore } from '@/store/zustand'
 
 const History = () => {
   const router = useRouter();
-
+  const {access_token} = useLoginStore()
   const columns: ColumnsType<IReport> = [
     {
       title: 'Visitante',
@@ -75,7 +76,6 @@ const History = () => {
   ]
 
 const {data} = useQuery(CALL_POLICE)
-console.log(data);
   function registerNewVisitor() {
     router.push('/register-visitor')
   }
