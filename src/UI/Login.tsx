@@ -4,12 +4,12 @@ import { Button, Checkbox, Form, Input, notification } from 'antd'
 import { useMutation } from '@apollo/client'
 import { LOGIN } from '../../types/operation'
 import { useRouter } from 'next/navigation'
-import { useStore } from '@/context/zustand'
+import { useLoginStore } from '@/store/zustand'
 
 
 function App() {
   const router = useRouter()
-  const {setAccess_token, access_token} = useStore()
+  const {setAccess_token, access_token} = useLoginStore()
 
   const [login, { loading }] = useMutation(LOGIN, {
     onCompleted: (credentials) => {
