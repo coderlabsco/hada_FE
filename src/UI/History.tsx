@@ -11,7 +11,14 @@ import { useLoginStore } from '@/store/zustand'
 
 const History = () => {
   const router = useRouter();
-  const {access_token} = useLoginStore()
+  const { access_token } = useLoginStore()
+  const { data, loading, error } = useQuery(GET_ALL_REPORTS, {
+    context: {
+      headers: {
+        Authorization: `Bearer ${access_token}`
+      }
+    }
+  })
   const columns: ColumnsType<IReport> = [
     {
       title: 'Visitante',
@@ -45,37 +52,14 @@ const History = () => {
     },
   ]
 
-  const fakeData: IReport[] = [
-    {
-      "key": "1",
-      "_id": "659460bf50b48a51055c8563",
-      "name": "Guillermo",
-      "brand": "BMW M3",
-      "typeVehicle": typeVehicle.MOTORCYCLE,
-      "apartment": "502",
-      "plateByPerson": "FFF-122",
-      "nameToVisit": "Pamela",
-      "imageID": "659460bf50b48a51055c8563",
-      "timeAt": ("2023-12-22T16:03:52.535+0000"),
-      "whoRegistered": ("6581f3435c84108688f8b2b1")
-    },
-    {
-      "key": "2",
-      "_id": "659460bf50b48a51055c8562",
-      "name": "Guillermo",
-      "brand": "BMW M3",
-      "typeVehicle": typeVehicle.MOTORCYCLE,
-      "apartment": "502",
-      "plateByPerson": "FFF-122",
-      "nameToVisit": "Pamela",
-      "imageID": "659460bf50b48a51055c8563",
-      "timeAt": ("2023-12-22T16:03:52.535+0000"),
-      "whoRegistered": ("6581f3435c84108688f8b2b1")
-    }
-
-  ]
-
-const {data} = useQuery(CALL_POLICE)
+  let newData: IReport[] = data?.GetAllReports
+  if (newData?.length>0) {
+    
+    newData = newData.map((element) => ({
+      ...element, key: element._id
+    }))
+    
+  }
   function registerNewVisitor() {
     router.push('/register-visitor')
   }
@@ -83,7 +67,8 @@ const {data} = useQuery(CALL_POLICE)
     <>
       <Table
         columns={columns}
-        dataSource={fakeData}
+        loading={loading}
+        dataSource={newData}
         footer={() => <footer className='flex justify-between'>
           <Pagination ></Pagination>
           <Button onClick={registerNewVisitor}>Registrar Ingreso de Visitante</Button>
