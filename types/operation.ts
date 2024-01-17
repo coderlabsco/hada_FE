@@ -29,3 +29,20 @@ query Query {
   CallPolice
 } 
 `
+
+export const REGISTER_VISITOR = gql`
+mutation AddReport($image: Upload!, $inputReport: InputSecurityGuardReport!) {
+  AddReport(image: $image, inputReport: $inputReport) {
+    apartment
+    brand
+    createdAt
+    name
+    nameToVisit
+    plateByAI
+    plateByPerson
+    timeAt
+    typeVehicle
+    whoRegistered
+  }
+}
+`
