@@ -7,11 +7,11 @@ import { useRouter } from 'next/navigation'
 import { getClient } from '@/graphql/ApolloClient'
 import { CALL_POLICE, GET_ALL_REPORTS } from '../../types/operation'
 import { useQuery } from '@apollo/client'
-import { useStore } from '@/context/zustand'
+import { useLoginStore } from '@/store/zustand'
 
 const History = () => {
   const router = useRouter();
-  const {access_token} = useStore()
+  const {access_token} = useLoginStore()
   const {data, loading, error} = useQuery(GET_ALL_REPORTS, {
     context: {headers: {
       Authorization: `Bearer ${access_token}`
