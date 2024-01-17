@@ -10,11 +10,17 @@ import { useLoginStore } from '@/store/zustand'
 function App() {
   const router = useRouter()
   const {setAccess_token, access_token} = useLoginStore()
+  const {setRefresh_token, refresh_token} = useLoginStore()
+  const {setName, name} = useLoginStore()
+  const {setEmail, email} = useLoginStore()
 
   const [login, { loading }] = useMutation(LOGIN, {
     onCompleted: (credentials) => {
-      const {access_token, refresh_token} = credentials.login
+      const {access_token, refresh_token, name, email} = credentials.login
       setAccess_token(access_token)
+      setRefresh_token(refresh_token)
+      setName(name)
+      setEmail(email)
       router.push('/history')
     },
   })

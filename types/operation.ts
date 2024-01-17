@@ -5,12 +5,16 @@ mutation Login($loginUserInput: LoginUserInput!) {
   login(loginUserInput: $loginUserInput) {
     access_token
     refresh_token
+    email
+    name
   }
-}`
+}
+`
 
 export const GET_ALL_REPORTS = gql`
 query GetAllReports {
   GetAllReports {
+    _id
     apartment
     brand
     createdAt

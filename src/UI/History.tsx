@@ -11,11 +11,13 @@ import { useLoginStore } from '@/store/zustand'
 
 const History = () => {
   const router = useRouter();
-  const {access_token} = useLoginStore()
-  const {data, loading, error} = useQuery(GET_ALL_REPORTS, {
-    context: {headers: {
-      Authorization: `Bearer ${access_token}`
-    }}
+  const { access_token } = useLoginStore()
+  const { data, loading, error } = useQuery(GET_ALL_REPORTS, {
+    context: {
+      headers: {
+        Authorization: `Bearer ${access_token}`
+      }
+    }
   })
   const columns: ColumnsType<IReport> = [
     {
@@ -50,8 +52,14 @@ const History = () => {
     },
   ]
 
-  const newData: IReport[] = data?.GetAllReports
-
+  let newData: IReport[] = data?.GetAllReports
+  if (newData?.length>0) {
+    
+    newData = newData.map((element) => ({
+      ...element, key: element._id
+    }))
+    
+  }
   function registerNewVisitor() {
     router.push('/register-visitor')
   }
